@@ -19,4 +19,6 @@ It is a simple and practical course with amazing interactive quizzes (check the 
 ## PostgreSQL
 
 ### JSON Functions
+- [JSON Functions and Operators](https://www.postgresql.org/docs/12/functions-json.html) - Standard postgresql json functiond
 - [jsonknife (github/niquola)](https://github.com/niquola/jsonknife) - Useful functions for working with jsonb in PostgreSQL like data extraction, validation & transformation
+- [JsQuery](https://github.com/postgrespro/jsquery) – json query language with GIN indexing support
