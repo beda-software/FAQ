@@ -11,6 +11,12 @@ XMLHttpRequest = GLOBAL.originalXMLHttpRequest ?
 ```
 Don't forget to remove it before pushing!
 
+#### Open link in a running simulator
+
+```sh
+xcrun simctl openurl booted link-goes-here
+```
+
 
 ## Backend (Python)
 
