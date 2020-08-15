@@ -65,3 +65,16 @@ set resource = jsonb_set(
    (resource #> '{sourceQuery,entry,0,resource}')- 'filter'
 )
 ```
+
+## Aidbox Resources
+
+### How to add an object attribute with Any content to an Aidbox resource
+
+```
+"Condition.property": {
+    "path": ["property"],
+    "resource": {"resourceType": "Entity", "id": "Condition"},
+    "extensionUrl": "http://beda.software/fhir-extensions/condition-property",
+    "schema": {"type": "object"},
+},
+```
