@@ -23,6 +23,33 @@ xcrun simctl openurl booted link-goes-here
 #### Always use _id instead of id in search params
 Aidbox accepts both id and _id search params. This is causing problems with access policies.
 We should always use "_id" instead of "id" search params on frontend as well as backend part of an app.
+#### Try to avoid subscription in favor of the custom operation
+If you need to mutate the original resource before/after save - use the custom operation to do it. It has some benefits:
+* Version id won't be increased twice
+* Easier to test
+* You can make transactional queries: all or nothing
+
+#### Don't use the display in references
+Using `display` in references is a bad idea because it is denormalization and the original title can be changed so that you will need to actualize it. Actualization is a very difficult process and has some drawbacks:
+* It changes version ID --- our UI usually can't handle version mismatch
+* It takes time - you need to go through the database and find all references
+* It can't work with other subscriptions (because actualization is a best practice for subscriptions)
+
+If you don't want to have a headache with these problems, consider using `_include` every time to get the actual value.
+
+#### User resource role in the system
+User resources must contain only credentials and links to appropriate Patient/Practitioner. 
+
+Practitioners can be used for admin roles and other stuff (see FHIR spec for details). 
+Using references to `User` should be forbidden because makes a potential vulnerability (because of _include/_assoc that is not forbidden by default). Instead of this, always make references to appropriate Patient/Practitioner.
+
+#### Access policy rules
+They always should have `additionalProperties: false` for search params to forbid passing `_assoc/_include/_revinclude`.
+
+
+#### Avoid using access_policy argument in the custom operation
+Using `access_policy` argument in the customer operation makes it difficult to maintain policies for different roles
+
 
 ### QA, Backend Tests
 
