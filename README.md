@@ -23,6 +23,7 @@ xcrun simctl openurl booted link-goes-here
 #### Always use _id instead of id in search params
 Aidbox accepts both id and _id search params. This is causing problems with access policies.
 We should always use "_id" instead of "id" search params on frontend as well as backend part of an app.
+
 #### Try to avoid subscription in favor of the custom operation
 If you need to mutate the original resource before/after save - use the custom operation to do it. It has some benefits:
 * Version id won't be increased twice
