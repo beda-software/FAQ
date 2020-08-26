@@ -41,7 +41,7 @@ If you don't want to have a headache with these problems, consider using `_inclu
 #### User resource role in the system
 User resources must contain only credentials and links to appropriate Patient/Practitioner. 
 
-Practitioners can be used for admin roles and other stuff (see FHIR spec for details). 
+Practitioners can be used for admin roles and other roles (see FHIR spec for details). 
 Using references to `User` should be forbidden because makes a potential vulnerability (because of _include/_assoc that is not forbidden by default). Instead of this, always make references to appropriate Patient/Practitioner.
 
 #### Access policy rules
