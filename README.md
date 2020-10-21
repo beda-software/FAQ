@@ -52,6 +52,34 @@ They always should have `additionalProperties: false` for search params to forbi
 Using `access_policy` argument in the customer operation makes it difficult to maintain policies for different roles
 
 
+#### Generate future datetime ranges with DST/STD time shifting
+In many countries there is a Daylight saving time shifting. While generating future time ranges it is necessary to consider such shiftings.
+
+In Israel, DST->STD in 2020 is occuring on October 25.
+For example, there is a task to generate a datetime range from October 20 for 7 days with the 1 day step.
+
+This code will prevent to an error starting from October 25, because `datetime.timedelta` doesn't consider the DST->STD time shift:
+
+```
+while current_date < end_date:
+  # datetime.timedelta doesn't consider time shifting
+  current_date += datetime.timedelta(days=1)
+```
+
+To fix this use DST shift adding/subtraction:
+
+```
+next_date = current_date + datetime.timedelta(days=1)
+
+# Normalize datetime to the local timezone considering DST/STD
+next_date = next_date.tzinfo.normalize(next_date)
+
+# Add/subtract DST (3600 seconds) /STD (0 seconds) time shift
+next_date = next_date + (current.dst() - next_date.dst())
+```
+
+Do not forget to cover this logic with tests by checking that all time values (hours, minutes, etc) in your range are equal and the range parts quantity is correct
+
 ### QA, Backend Tests
 
 #### Mocking free functions
