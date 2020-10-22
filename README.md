@@ -25,7 +25,9 @@ Aidbox accepts both id and _id search params. This is causing problems with acce
 We should always use "_id" instead of "id" search params on frontend as well as backend part of an app.
 
 #### Always user "token" type for SearchParameter instead of "string"
-Mistakenly we use "string" as SearchParameter.type for some attributes with type "text", but it leads to serious issues, because FHIR search works as full-text search with substring partial matching. Example: SearchParameter User.email must have "token" type
+Mistakenly we use "string" as SearchParameter.type for some attributes with type "text", but it leads to serious issues, because FHIR search works as full-text search with substring partial matching. Example: SearchParameter User.email must have "token" type.
+
+See [FHIR Search](https://www.hl7.org/fhir/search.html#ptypes) specification about how different SearchParameter types work.
 
 #### Try to avoid subscription in favor of the custom operation
 If you need to mutate the original resource before/after save - use the custom operation to do it. It has some benefits:
