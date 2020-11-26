@@ -16,7 +16,52 @@ Don't forget to remove it before pushing!
 ```sh
 xcrun simctl openurl booted link-goes-here
 ```
+#### Jest testing
 
+
+There's a `module.js`, for example:
+
+```
+export const calculate = (a, b) => a + b;
+```
+
+How to mock it?
+
+**Mock a module with jest.mock**
+
+Common approach is to use `jest.mock` to automatically set all exports of a module to the Mock Function.
+
+```
+import * as module from "./module";
+
+jest.mock("./module.js");
+
+test("calls module.calculate", () => {
+  module.calculate(1, 2);
+  expect(module.calculate).toHaveBeenCalledWith(1, 2);
+});
+
+```
+
+**Mock a function with jest.spyOn + mockImplementation**
+
+You can mock a function then restore the original implementation:
+
+```
+import * as module from "./module";
+
+test("calls math.calculate", () => {
+  const calculateMock = jest.spyOn(module, "calculate");
+
+  calculateMock.mockImplementation(() => 42);
+
+  expect(module.calculate(1, 2)).toEqual(42);
+
+  calculateMock.mockRestore();
+
+  expect(calculateMock).toHaveBeenCalledWith(1, 2);
+});
+```
 
 ## Backend (Python)
 
