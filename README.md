@@ -63,6 +63,9 @@ test("calls math.calculate", () => {
 });
 ```
 
+#### `xcrun: error: SDK "iphoneos" cannot be located` issue
+`sudo xcode-select --switch /Applications/Xcode.app`
+
 ## Backend (Python)
 
 #### Always use _id instead of id in search params
