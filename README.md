@@ -140,7 +140,8 @@ Do not forget to cover this logic with tests by checking that all time values (h
 organization = sdk.client.resource(
   "Organization",
   name="beda.software",
-  active=False
+  active=False,
+  someAttribute="attribute value"
 )
 ```
 
@@ -148,7 +149,7 @@ organization = sdk.client.resource(
 ```python
 organization = sdk.client.resource(
   "Organization",
-  **{"name": "beda.software", "active": False}
+  **{"name": "beda.software", "active": False, "someAttribute": "attribute value"}
 )
 ```
 
@@ -164,7 +165,7 @@ organization = sdk.client.resource(
 
 **Good**
 ```python
-"Encounter.hasInvoice": {
+"Encounter.has-invoice": {
   "name": "has-invoice",
   #...
 },
