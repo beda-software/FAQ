@@ -150,6 +150,60 @@ next_date = next_date + (current.dst() - next_date.dst())
 
 Do not forget to cover this logic with tests by checking that all time values (hours, minutes, etc) in your range are equal and the range parts quantity is correct
 
+
+#### Create resources via dict not via args
+**Bad**
+```python
+organization = sdk.client.resource(
+  "Organization",
+  name="beda.software",
+  active=False,
+  someAttribute="attribute value"
+)
+```
+
+**Good**
+```python
+organization = sdk.client.resource(
+  "Organization",
+  **{"name": "beda.software", "active": False, "someAttribute": "attribute value"}
+)
+```
+
+
+#### Use dasherize search parameters names and URL paths in operations
+**Bad**
+```python
+"Encounter.hasInvoice": {
+  "name": "hasInvoice",
+  #...
+},
+```
+
+**Good**
+```python
+"Encounter.has-invoice": {
+  "name": "has-invoice",
+  #...
+},
+```
+
+**Bad**
+```python
+@sdk.operation(["GET"], ["Resource", {"name": "resource_id"}, "$operation_with_resource"])
+```
+
+or
+
+```python
+@sdk.operation(["GET"], ["Resource", {"name": "resourceId"}, "$operationWithResource"])
+```
+
+**Good**
+```python
+@sdk.operation(["GET"], ["Resource", {"name": "resource-id"}, "$operation-with-resource"])
+```
+
 ### QA, Backend Tests
 
 #### Mocking free functions
