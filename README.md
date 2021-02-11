@@ -78,7 +78,7 @@ const filteredMeasurements = sleepMeasurements.filter((v): v is number => v !== 
 You can read more here [User-Defined Type Guards](https://www.typescriptlang.org/docs/handbook/advanced-types.html#user-defined-type-guards)
 
 #### Determine array element's type
-```
+```TypeScript
 type Some = ['A', 'B', 'C']
 type AnyOfSome = Some[number] // type AnyOfSome = 'A' | 'B' | 'C'
 ```
