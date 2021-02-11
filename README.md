@@ -66,6 +66,23 @@ test("calls math.calculate", () => {
 #### `xcrun: error: SDK "iphoneos" cannot be located` issue
 `sudo xcode-select --switch /Applications/Xcode.app`
 
+## Typescript
+
+#### Use type predicate for functions like `filter` to alter output type
+```TypeScript
+const sleepMeasurements: (number | undefined)[]
+const filteredMeasurements = sleepMeasurements.filter((v) => v !== undefined)) // will be (number | undefined)[]
+// now use type predicate
+const filteredMeasurements = sleepMeasurements.filter((v): v is number => v !== undefined)) // will be (number)[]
+```
+You can read more here [User-Defined Type Guards](https://www.typescriptlang.org/docs/handbook/advanced-types.html#user-defined-type-guards)
+
+#### Determine array element's type
+```TypeScript
+type Some = ['A', 'B', 'C']
+type AnyOfSome = Some[number] // type AnyOfSome = 'A' | 'B' | 'C'
+```
+
 ## Backend (Python)
 
 #### Always use _id instead of id in search params
