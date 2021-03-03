@@ -1,3 +1,15 @@
+# Contents
+- [Best practicies](#best-practicies)
+  - [React Native](#react-native)
+  - [Typescript](#typescript)
+  - [Backend Python](#backend-python)
+  - [Aidbox](#aidbox)
+- [BS video library (meetup records)](video-library.md)
+- [Learning materials](learning_materials.md)
+- [SNOMED and Snowstorm](snowstorm_snomed.md)
+- [React Native tips](react-native-tips.md)
+
+
 # Best practicies
 
 ## React Native
@@ -66,6 +78,9 @@ test("calls math.calculate", () => {
 #### `xcrun: error: SDK "iphoneos" cannot be located` issue
 `sudo xcode-select --switch /Applications/Xcode.app`
 
+#### Fonts
+Good tutorial how to add custom fonts: https://medium.com/@mehran.khan/ultimate-guide-to-use-custom-fonts-in-react-native-77fcdf859cf4
+
 ## Typescript
 
 #### Use type predicate for functions like `filter` to alter output type
@@ -83,7 +98,7 @@ type Some = ['A', 'B', 'C']
 type AnyOfSome = Some[number] // type AnyOfSome = 'A' | 'B' | 'C'
 ```
 
-## Backend (Python)
+## Backend Python
 
 #### Always use _id instead of id in search params
 Aidbox accepts both id and _id search params. This is causing problems with access policies.
@@ -212,12 +227,13 @@ Use module path the function is looked up in (it might be different from the mod
 
 
 
-## Aidbox Migrations
+## Aidbox
+### Aidbox Migrations
 We can use Aidbox REST Console to run SQL queries.
 
 Reference: [Postgres JSON Functions and Operators](https://www.postgresql.org/docs/current/functions-json.html)
 
-### Ex. 1: Deletion of an aidbox resource attribute
+#### Ex. 1: Deletion of an aidbox resource attribute
 
 Updated resource example (the filter attribute to be deleted):
 ```yaml
@@ -246,9 +262,9 @@ set resource = jsonb_set(
 )
 ```
 
-## Aidbox Resources
+### Aidbox Resources
 
-### How to add an object attribute with Any content to an Aidbox resource
+#### How to add an object attribute with Any content to an Aidbox resource
 
 ```
 "Condition.property": {
