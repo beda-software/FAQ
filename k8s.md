@@ -2,11 +2,12 @@ How to setup k8s autocomplete and other useful information – see official [kub
 
 First of all, export ENV with the path to k8s config:
 ```Shell
-export KUBECONFIG=~/.kube/juli
+export KUBECONFIG=~/.kube/your-project-config
 ```
 
 ## Namespace
 
+Get all namespaces
 ```Shell
 kubectl get ns
 ```
@@ -48,4 +49,46 @@ kubectl -n ... scale deploy DEPLOYNAME --replicas=0
 kubectl -n ... scale deploy DEPLOYNAME --replicas=1
 ```
 
+## Investigate problems
 
+Find needed deploy and pod and describe them
+```
+kubectl get pod
+kubectl describe pod/PODNAME
+kubectl get deploy
+kubectl describe deploy/DEPLOYNAME
+```
+
+Get logs
+```
+kubectl logs PODNAME
+kubectl logs pod/PODNAME
+kubectl logs deploy/DEPLOYNAME
+```
+
+## Connect to pod container in interactive mode / execute command
+```
+kubectl exec -it -n NAMESPACE deploy/DEPLOYNAME bash
+```
+
+## Show metrics
+```
+kubectl top nodes
+kubectl top pod -n NAMESPACE
+kubectl top pod POD_NAME --containers
+```
+
+## Create (run) job from existing one
+```
+kubectl create job --from=cronjob/JOB_NAME -n NAMESPACE YOUR_JOB_NAME
+```
+
+Wait for job completion (helpful for bash scripts)
+```
+kubectl wait --for=condition=complete job/YOUR_JOB_NAME --timeout=5m -n NAMESPACE
+```
+
+## Get all pods hosted on a particular node
+```
+kubectl get pods --all-namespaces -o wide --field-selector spec.nodeName=NODE_NAME
+```
