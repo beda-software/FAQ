@@ -8,6 +8,7 @@
 - [Learning materials](learning_materials.md)
 - [SNOMED and Snowstorm](snowstorm_snomed.md)
 - [React Native tips](react-native-tips.md)
+- [kubectl/k8s cheat sheet](k8s.md)
 
 
 # Best practicies
