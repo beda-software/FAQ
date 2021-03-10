@@ -80,7 +80,7 @@ kubectl top pod POD_NAME --containers
 
 ## Create (run) job from existing one
 ```
-kubectl create job --from=cronjob/JOB_NAME -n NAMESPACE YOUR_JOB_NAME
+kubectl create job --from=cronjob/JOB_NAME -n NAMESPACE manual-backup-`date +%s`
 ```
 
 Wait for job completion (helpful for bash scripts)
