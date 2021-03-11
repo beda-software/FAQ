@@ -275,3 +275,10 @@ set resource = jsonb_set(
     "schema": {"type": "object"},
 },
 ```
+
+### Backups
+#### Restore backup to local dev environment
+```
+docker-compose up -d devbox-db
+cat backup.dump |  docker exec -i environment_devbox-db_1 pg_restore  -d devbox
+```
