@@ -92,3 +92,22 @@ kubectl wait --for=condition=complete job/YOUR_JOB_NAME --timeout=5m -n NAMESPAC
 ```
 kubectl get pods --all-namespaces -o wide --field-selector spec.nodeName=NODE_NAME
 ```
+
+## Add basic auth
+Create password
+```
+htpasswd -c auth USERNAME
+```
+Fill password. Then:
+```
+kubectl create secret generic basic-auth --from-file=auth -n NAMESPACE
+```
+
+Then find a deploy/statefulset, edit it (`kubectl edit deploy/DEPLOYNAME ...`) and add to `annotations`:
+```
+nginx.ingress.kubernetes.io/auth-type: basic
+nginx.ingress.kubernetes.io/auth-secret: basic-auth
+nginx.ingress.kubernetes.io/auth-realm: 'Authentication Required'
+```
+
+
