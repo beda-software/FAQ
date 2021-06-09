@@ -9,7 +9,8 @@
 - [SNOMED and Snowstorm](snowstorm_snomed.md)
 - [React Native tips](react-native-tips.md)
 - [kubectl/k8s cheat sheet](k8s.md)
-
+- Tutorials
+  - [Setting up GitLab runner on AWS EC2](aws-ec2-gitlab-runner.md)
 
 # Best practicies
 
