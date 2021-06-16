@@ -283,3 +283,7 @@ set resource = jsonb_set(
 docker-compose up -d devbox-db
 cat backup.dump |  docker exec -i environment_devbox-db_1 pg_restore  -d devbox
 ```
+
+### Emacs
+#### Crash with watching hidden files
+https://github.com/facebook/create-react-app/pull/10706/files
