@@ -289,4 +289,5 @@ cat backup.dump |  docker exec -i environment_devbox-db_1 pg_restore  -d devbox
 https://github.com/facebook/create-react-app/pull/10706/files
 ```
 curl  https://raw.githubusercontent.com/facebook/create-react-app/a3dd649530f4c0c305fc183842399c9d36ecf97f/packages/react-dev-utils/ignoredFiles.js > node_modules/react-dev-utils/ignoredFiles.js
+curl  https://raw.githubusercontent.com/facebook/create-react-app/a3dd649530f4c0c305fc183842399c9d36ecf97f/packages/react-dev-utils/ignoredFiles.js > ./node_modules/react-scripts/node_modules/react-dev-utils/ignoredFiles.js
 ```
