@@ -28,8 +28,10 @@
     3.  `sudo amazon-linux-extras install docker`
     4.  `sudo service docker start`
     5.  `sudo usermod -a -G docker ec2-user`
-    6.  `sudo yum install -y git`
-    7.  `sudo gitlab-ci-multi-runner register -n --url GITLAB_URL --registration-token "TOKEN"   --executor docker   --description "Name of docker runner"   --docker-image "docker:latest" --docker-privileged`
+    6.  `sudo systemctl enable docker.service`
+    7.  `sudo systemctl enable containerd.service`
+    8.  `sudo yum install -y git`
+    9.  `sudo gitlab-ci-multi-runner register -n --url GITLAB_URL --registration-token "TOKEN"   --executor docker   --description "Name of docker runner"   --docker-image "docker:latest" --docker-privileged`
 
 **GITLAB_URL** and **TOKEN** can be obtained on GitLab CI/CD runners settings for the group/project.
 
