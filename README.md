@@ -103,8 +103,8 @@ type AnyOfSome = Some[number] // type AnyOfSome = 'A' | 'B' | 'C'
 ## Backend Python
 
 #### Always use _id instead of id in search params
-Aidbox accepts both id and _id search params. This is causing problems with access policies.
-We should always use "_id" instead of "id" search params on frontend as well as backend part of an app.
+Aidbox accepts both id and _id search params. But according to spec https://www.hl7.org/fhir/search.html the only valid param is `_id`. This is causing problems with access policies and may cause potential issues in future.
+So it'd be better to always use "_id" instead of "id" search params on frontend as well as backend part of an app.
 
 #### Always user "token" type for SearchParameter instead of "string"
 Mistakenly we use "string" as SearchParameter.type for some attributes with type "text", but it leads to serious issues, because FHIR search works as full-text search with substring partial matching. Example: SearchParameter User.email must have "token" type.
