@@ -278,10 +278,10 @@ set resource = jsonb_set(
 ```
 
 ### Exceptions and OperationOutcome
-It is better to return Exception or HTTPError in form of (http://www.hl7.org/fhir/operationoutcome.html)[OperationOutcome] resource.
+It is better to return Exception or HTTPError in form of [OperationOutcome](http://www.hl7.org/fhir/operationoutcome.html) resource.
 
-You need (https://pypi.org/project/fhirpy/)[fhirpy] or (https://pypi.org/project/aidboxpy/)[aidboxpy] version 1.3.0 or higher to import OperationOutcome.
-You need (https://github.com/Aidbox/aidbox-python-sdk/commit/73c71a5b33091865c1bc1af2caa60f6f44539db5)[aidbox-python-sdk] to enable sdk operations return relevant HTTPError if OperationOutcome exception raised.
+You need [fhirpy](https://pypi.org/project/fhirpy/) or [aidboxpy](https://pypi.org/project/aidboxpy/) version 1.3.0 or higher to import OperationOutcome.
+You need [aidbox-python-sdk](https://github.com/Aidbox/aidbox-python-sdk/commit/73c71a5b33091865c1bc1af2caa60f6f44539db5) to enable sdk operations return relevant HTTPError if OperationOutcome exception raised.
 
 Usage example:
 ```python
