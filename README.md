@@ -277,6 +277,27 @@ set resource = jsonb_set(
 },
 ```
 
+### Exceptions and OperationOutcome
+It is better to return Exception or HTTPError in form of (http://www.hl7.org/fhir/operationoutcome.html)[OperationOutcome] resource.
+
+You need (https://pypi.org/project/fhirpy/)[fhirpy] or (https://pypi.org/project/aidboxpy/)[aidboxpy] version 1.3.0 or higher to import OperationOutcome.
+You need (https://github.com/Aidbox/aidbox-python-sdk/commit/73c71a5b33091865c1bc1af2caa60f6f44539db5)[aidbox-python-sdk] to enable sdk operations return relevant HTTPError if OperationOutcome exception raised.
+
+Usage example:
+```python
+from app.sdk import sdk
+from fhirpy.base.exceptions import OperationOutcome, IssueType, IssueSeverity
+
+@sdk.operation(["POST"], ["Observation", "$create"], )
+async def observation_custom_create(operation, request):
+    try:
+        observation_data = request["resource"]["observation_data"]
+    except KeyError as e:
+        error_text = f"Attribute: {str(e)} is required"
+        raise OperationOutcome(reason=error_text, code=IssueType.required.value, severity=IssueSeverity.error.value)
+
+```
+
 ### Backups
 #### Restore backup to local dev environment
 ```
